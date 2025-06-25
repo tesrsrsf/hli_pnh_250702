@@ -1,8 +1,8 @@
 import json
 
 SAVE_FILE = 'save.jsonl'
-QUESTION_FILE = 'cross_china.json'
-CHARACTER_FILE = 'china_character 1.json'
+QUESTION_FILE = 'dataset/cross_china.json'
+CHARACTER_FILE = 'dataset/character_profile_china.json'
 
 results = []
 
