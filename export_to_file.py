@@ -1,13 +1,16 @@
 import json
 
-SAVE_FILE = 'save.jsonl'
-QUESTION_FILE = 'china 1.json'
-CHARACTER_FILE = 'china_character 1.json'
-EXPORT_FILE = 'final.json'
+DATASET_NAME = 'cross_china'
+QUESTION_FILE = f'dataset/{DATASET_NAME}.json'
+SAVE_FILE = f'{DATASET_NAME}_save.jsonl'
+CHARACTER_FILE = 'dataset/china_profile_china.json'
+EXPORT_FILE = f'{DATASET_NAME}_final.json'
 
-P1 = '검수 기준 1'
-P2 = '검수 기준 2'
-P3 = '검수 기준 3'
+P1 = '기준 1'
+P2 = '기준 2'
+P3 = '기준 3'
+P4 = '기준 4'
+PE = '기타'
 
 
 def read_people():
@@ -40,12 +43,16 @@ def generate_res(people, anno_data):
         pg1 = line['p1']
         pg2 = line['p2']
         pg3 = line['p3']
+        pg4 = line['p4']
+        pe = line['pe']
 
         for i in range(0, len(res_dict['china'][name])):
             if res_dict['china'][name][i]['Question'] == q:
                 res_dict['china'][name][i][P1] = pg1
                 res_dict['china'][name][i][P2] = pg2
                 res_dict['china'][name][i][P3] = pg3
+                res_dict['china'][name][i][P4] = pg4
+                res_dict['china'][name][i][PE] = pe
                 break
 
     return res_dict
