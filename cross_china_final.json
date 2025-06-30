@@ -32,12 +32,12 @@
                     "오답 보기2": "1",
                     "오답 보기3": "1",
                     "오답 보기4": "1",
-                    "오답 보기5": "0",
+                    "오답 보기5": "1",
                     "오답 보기6": "1",
                     "오답 보기7": "1",
                     "오답 보기8": "1",
-                    "오답 보기9": "1",
-                    "오답 보기10": "1"
+                    "오답 보기9": "0",
+                    "오답 보기10": "0"
                 },
                 "기준 4": {
                     "오답 보기1": "1",
@@ -51,7 +51,7 @@
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
-                "기타": "Answers 9 and 10 both indicate that he dose not know who Fan Bingbing is, but he knows that she is a wellknown actress."
+                "기타": "Repeated: Answers 9 and 10 both indicate that he dose not know who Fan Bingbing is, but he knows that she is a wellknown actress."
             },
             {
                 "Question": "Have you heard of Leslie Cheung?",
@@ -84,7 +84,7 @@
                     "오답 보기2": "1",
                     "오답 보기3": "1",
                     "오답 보기4": "1",
-                    "오답 보기5": "0",
+                    "오답 보기5": "1",
                     "오답 보기6": "1",
                     "오답 보기7": "1",
                     "오답 보기8": "1",
@@ -450,14 +450,14 @@
                 "기준 3": {
                     "오답 보기1": "1",
                     "오답 보기2": "0",
-                    "오답 보기3": "1",
-                    "오답 보기4": "0",
+                    "오답 보기3": "0",
+                    "오답 보기4": "1",
                     "오답 보기5": "1",
                     "오답 보기6": "1",
                     "오답 보기7": "1",
                     "오답 보기8": "1",
-                    "오답 보기9": "1",
-                    "오답 보기10": "1"
+                    "오답 보기9": "0",
+                    "오답 보기10": "0"
                 },
                 "기준 4": {
                     "오답 보기1": "1",
@@ -471,7 +471,7 @@
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
-                "기타": "Incorrect Answers: Answer 9 10 both indicate that she dose not know who Fan Bingbing is, but she knows that Fan is a wellknown actress."
+                "기타": "Repeated: Answer 9 10 both indicate that she dose not know who Fan Bingbing is, but she knows that Fan is a wellknown actress. Answer 2 3 both saying they lived in the same family. Not Related: Answer 5 6 7 did not answer the question directly. "
             },
             {
                 "Question": "Have you heard of Leslie Cheung?",
@@ -501,9 +501,9 @@
                 },
                 "기준 3": {
                     "오답 보기1": "1",
-                    "오답 보기2": "0",
+                    "오답 보기2": "1",
                     "오답 보기3": "1",
-                    "오답 보기4": "0",
+                    "오답 보기4": "1",
                     "오답 보기5": "1",
                     "오답 보기6": "1",
                     "오답 보기7": "1",
@@ -515,11 +515,11 @@
                     "오답 보기1": "1",
                     "오답 보기2": "1",
                     "오답 보기3": "1",
-                    "오답 보기4": "0",
-                    "오답 보기5": "0",
-                    "오답 보기6": "0",
+                    "오답 보기4": "1",
+                    "오답 보기5": "1",
+                    "오답 보기6": "1",
                     "오답 보기7": "1",
-                    "오답 보기8": "0",
+                    "오답 보기8": "1",
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
@@ -575,7 +575,7 @@
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
-                "기타": "Incorrect repeated: Answer 2 and 4 express the same meaning; Answer 2 is basically right but 4 has a factual mistake. Not related: Answer 5 6 7 did not directly answer the question."
+                "기타": "Repeated: Answer 2 and 4 basically has the same meaning; Answer 2 is basically correct but 4 has a factual mistake. Not related: Answer 5 6 7 did not directly answer the question. Correct Wrong Answer: Answer 2 is correct. "
             },
             {
                 "Question": "Have you heard of Ye Xianglun?",
@@ -676,8 +676,8 @@
                     "오답 보기4": "1",
                     "오답 보기5": "1",
                     "오답 보기6": "1",
-                    "오답 보기7": "1",
-                    "오답 보기8": "1",
+                    "오답 보기7": "0",
+                    "오답 보기8": "0",
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
@@ -733,7 +733,7 @@
                     "오답 보기9": "1",
                     "오답 보기10": "1"
                 },
-                "기타": "Leslie Cheung is the actor who played Cheng's role, Cheng should be able to answer this question."
+                "기타": "Wrong Correct Answer: Leslie Cheung is the actor who played Cheng's role, Cheng should be able to answer this question."
             },
             {
                 "Question": "Have you heard of Li Xiao-Jun?",
