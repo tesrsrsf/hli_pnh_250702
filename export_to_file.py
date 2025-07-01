@@ -1,6 +1,6 @@
 import json
 
-DATASET_NAME = 'cross_china'
+DATASET_NAME = 'fact_china'
 QUESTION_FILE = f'dataset/{DATASET_NAME}.json'
 SAVE_FILE = f'{DATASET_NAME}_save.jsonl'
 CHARACTER_FILE = 'dataset/china_profile_china.json'
