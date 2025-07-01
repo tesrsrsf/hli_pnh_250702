@@ -1,4 +1,6 @@
 import json
+from openai import OpenAI
+import ast
 
 DATASET_NAME = 'fact_china'
 QUESTION_FILE = f'dataset/{DATASET_NAME}.json'
@@ -6,6 +8,7 @@ SAVE_FILE = f'{DATASET_NAME}_save.jsonl'
 CHARACTER_FILE = 'dataset/character_profile_china.json'
 EXPORT_FILE = f'{DATASET_NAME}_final.json'
 
+API_KEY = ""
 PROFILE_LINKS = {
     "Confucius": "https://en.wikipedia.org/wiki/Confucius",
     "Qin Shi Huang": "https://en.wikipedia.org/wiki/Qin_Shi_Huang",
@@ -40,6 +43,166 @@ def print_ia(question):
 
         print(f"{line}: {question[line]}")
         qid += 1
+
+
+def remove_stop_chars(data: str):
+    result = data
+    length = len(result)
+    i = 1
+    while i < length:
+        if result[i] == '\'' or result[i] == '\"':
+            if result[i - 1] not in ['[', '{', ' '] and result[i + 1] not in [']', ',', '}']:
+                result = result[:i] + result[i + 1:]
+                length = len(result)
+
+        i += 1
+
+    return result
+
+
+def exclude_non_res(data):
+    result = ""
+
+    i = 0
+    j = 1
+
+    for i in range(0, len(data)):
+        if data[i] == '{':
+            break
+
+    for j in range(0, len(data)):
+        if data[i] == '}':
+            break
+
+    j += 1
+
+    if (j - i) == len(data):
+        result = data
+    else:
+        result = data[i:j]
+
+    return result
+
+
+def get_gpt_res(question, standard, person):
+    gpt_results = ""
+
+    tasks = {
+        1: "Check whether the correct answer is actually correct. Explain the reason. ",
+        2: "Check nine incorrect answers, see if there is any of them can be considered as correct answer. Explain the reason. ",
+        3: "Check nine incorrect answers, see if there is any duplicated answers. Explain the reason. ",
+        4: "Check nine incorrect answers, see if there is any unrelated answers. Explain the reason. "
+    }
+
+    output_formats = {
+        1: "If the correct answer is actually correct, respond with \'1\', if not, then respond \'0\', the respond message format should have the format: "
+           "{0: RESULT, 1: \'REASON\'}"
+           "\n for example, like this:"
+           "{0: \'1\', 1: \'this is correct\'}",
+        2: "If the incorrect answer is actually correct, respond with \'0\', if not, then respond \'1\', the respond message format should have the format: "
+           "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
+           "\nfor example, like this: "
+           "{\'china\': [\'1\', \'this is correct\'], \'mexico\': [\'0\', \'this is wrong\']}"
+           "\n the result should cover all nine incorrect answers",
+        3: "If the incorrect answer has duplicated answers, respond with \'0\', if not, then respond \'1\', the respond message format should have the format: "
+           "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
+           "\nfor example, like this: "
+           "{\'china\': [\'1\', \'this is not duplicated with others\'], \'mexico\': [\'0\', \'this is duplicated with answer 3\'], \'Azerbaijan\': [\'0\', \'this is duplicated with answer 2\']}"
+           "\n the result should cover all nine incorrect answers",
+        4: "If the incorrect answer is not related to the question, respond with \'0\', if not, then respond \'1\', the respond message format should have the format: "
+           "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
+           "\nfor example, like this: "
+           "{\'china\': [\'1\', \'this is related to the question\'], \'mexico\': [\'0\', \'this is not related to the question\']}"
+           "\n the result should cover all nine incorrect answers. "
+    }
+
+    warning = ("reason should be one to two sentences long, keep it short, also include facts. \n"
+               "Omit \' or \" character in the reason, except the one used in the template\n"
+               "Results only, don\' respond with reference")
+
+    client = OpenAI(api_key=API_KEY)
+
+    response = client.responses.create(
+        model="gpt-4.1",
+        input=f"Here is a question with one correct answer and nine incorrect answers."
+              f"{person} is answering this question\n"
+              f"The question is: "
+              f"{question}"
+              f"\n\nThe task is: \n"
+              f"{tasks[standard]}\n"
+              f"{output_formats[standard]}\n"
+              f"{warning}\n"
+              f"Wikipedia Link: {PROFILE_LINKS[person]}",
+        tools=[{"type": "web_search_preview"}]
+    )
+
+    gpt_results = response.output_text
+    gpt_results = exclude_non_res(gpt_results)
+    gpt_results = remove_stop_chars(gpt_results)
+
+    results_fin = ast.literal_eval(gpt_results)
+    return results_fin
+
+
+def print_gpt_res(gpt_res, standard):
+    if standard == 1:
+        res = gpt_res[0]
+        reason = gpt_res[1]
+        print(f"CA: {res}, {reason}")
+    else:
+        for ans_num in gpt_res:
+            res = gpt_res[ans_num][0]
+            reason = gpt_res[ans_num][1]
+
+            print(f"IA {ans_num}: {res}, {reason}")
+
+
+def gpt_opinion(question, standard, person):
+    gpt_res = get_gpt_res(question, standard, person)
+    print_gpt_res(gpt_res, standard)
+
+
+def question_organizer(question):
+    result = ""
+
+    qid = 0
+    for line in question:
+        if line == "기준 1":
+            break
+
+        result = result + f"{line}: {question[line]}\n"
+        qid += 1
+
+    return result
+
+
+def gpt_entry(question, standard, person):
+    gpt_question = question_organizer(question)
+    gpt_opinion(gpt_question, standard, person)
+
+
+def initialize_standard_item(country_list: list):
+    p2, p3, p4 = {}, {}, {}
+
+    for country in country_list:
+        p2[country] = ""
+        p3[country] = ""
+        p4[country] = ""
+
+    return p2, p3, p4
+
+
+def form_gpt_question(question: str, correct_answer: str, rest_answers: dict):
+    rest_answers_str = ""
+
+    for country in rest_answers:
+        rest_answers_str = rest_answers_str + f"Incorrect Answer ({country}): {rest_answers[country]}" + "\n"
+
+    result = (f"{question}\n"
+              f"Correct Answer (China): {correct_answer}\n"
+              f"{rest_answers_str}\n")
+
+    return result
 
 
 def display_ans_question(questions, name=None):
@@ -137,6 +300,7 @@ def display_ans_question(questions, name=None):
 
             has_err = False
 
+
             print('========== QUESTION STARTS HERE ==========\n')
             print(f'{question_item}: {i + 1}/{len(questions[question_item])}\n')
 
@@ -153,6 +317,8 @@ def display_ans_question(questions, name=None):
                 i += 1
                 continue
 
+            print('\n\n')
+            gpt_entry(question, 1, question_item)
             print('\n\n')
 
             problem_1 = input("truly most accurate?        :")
@@ -181,6 +347,8 @@ def display_ans_question(questions, name=None):
             print_ia(question)
 
             print('\n\n')
+            gpt_entry(question, 2, question_item)
+            print('\n\n')
 
             print("\nIncorrect actually correct?:")
             qid = 1
@@ -203,6 +371,8 @@ def display_ans_question(questions, name=None):
             print_ia(question)
 
             print('\n\n')
+            gpt_entry(question, 3, question_item)
+            print('\n\n')
 
             print("\nIncorrect repeated:")
             qid = 1
@@ -224,6 +394,8 @@ def display_ans_question(questions, name=None):
             print('\n\n')
             print_ia(question)
 
+            print('\n\n')
+            gpt_entry(question, 4, question_item)
             print('\n\n')
 
             print("\nNot related to program:")
