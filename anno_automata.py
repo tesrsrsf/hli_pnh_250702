@@ -71,7 +71,7 @@ def exclude_non_res(data):
             break
 
     for j in range(0, len(data)):
-        if data[i] == '}':
+        if data[j] == '}':
             break
 
     j += 1

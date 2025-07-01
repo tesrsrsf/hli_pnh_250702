@@ -589,7 +589,7 @@
                     "Tsipouro is a beloved traditional spirit often enjoyed during social gatherings."
                 ]
             },
-            "기준 1": "0",
+            "기준 1": "1",
             "기준 2": {
                 "en": "1",
                 "korea": "1",
@@ -614,7 +614,7 @@
                 "indonesia": "1",
                 "Greece": "1"
             },
-            "기타": "Wrong Correct Answer: It should be spelled as Baijiu"
+            "기타": ""
         },
         {
             "en_question": "What do farmers in china usually eat for lunch?",
@@ -908,10 +908,10 @@
             },
             "기준 3": {
                 "indonesia": "1",
-                "en": "1",
+                "en": "0",
                 "mexico": "1",
                 "korea": "1",
-                "Algeria": "1",
+                "Algeria": "0",
                 "Ethiopia": "1",
                 "West_Java": "1"
             },
@@ -924,7 +924,7 @@
                 "Ethiopia": "1",
                 "West_Java": "1"
             },
-            "기타": ""
+            "기타": "Repeated: en and Algeria are duplicated due to its low physical demand and social nature"
         },
         {
             "en_question": "What seasoning is indispensable in cooking in china?",
@@ -1231,12 +1231,12 @@
                 "Iran": "1",
                 "Assam": "1",
                 "Greece": "1",
-                "en": "1",
+                "en": "0",
                 "mexico": "1",
-                "Ethiopia": "1",
+                "Ethiopia": "0",
                 "North_Korea": "1"
             },
-            "기타": "Wrong Correct Answer: Star anise is not common enough, Sichuan peppercorn is better"
+            "기타": "Wrong Correct Answer: In Chinese cuisine, cumin is not the most commonly used spice. Instead, ingredients like ginger, garlic, and soy sauce are more prevalent. ; Not Related: Knorr is not a spice or herb but a brand ; "
         },
         {
             "en_question": "Which region in china is known for its seafood?",
@@ -1438,7 +1438,7 @@
                 "mexico": "1",
                 "Azerbaijan": "1",
                 "dummy": "1",
-                "spain": "1",
+                "spain": "0",
                 "Assam": "1",
                 "Ethiopia": "1",
                 "Northern_Nigeria": "1",
@@ -1457,14 +1457,14 @@
             "기준 4": {
                 "mexico": "1",
                 "Azerbaijan": "1",
-                "dummy": "0",
+                "dummy": "1",
                 "spain": "1",
                 "Assam": "1",
                 "Ethiopia": "1",
                 "Northern_Nigeria": "1",
                 "North_Korea": "1"
             },
-            "기타": "Not Related: Groundhog Day is not relevant to any child birth celebration and is unrelated to the question. "
+            "기타": "Correct Wrong Answer: this is duplicated with the correct answer as it also mentions one month"
         },
         {
             "en_question": "What do people eat on their birthday in china?",
@@ -1926,10 +1926,10 @@
             },
             "기준 4": {
                 "indonesia": "1",
-                "en": "1",
+                "en": "0",
                 "korea": "1",
                 "mexico": "1",
-                "Iran": "1",
+                "Iran": "0",
                 "Assam": "1",
                 "Azerbaijan": "1"
             },
@@ -2081,11 +2081,11 @@
             },
             "기준 1": "1",
             "기준 2": {
-                "Assam": "0",
+                "Assam": "1",
                 "Ethiopia": "1",
                 "en": "1",
                 "Iran": "1",
-                "Northern_Nigeria": "0"
+                "Northern_Nigeria": "1"
             },
             "기준 3": {
                 "Assam": "1",
@@ -2101,7 +2101,7 @@
                 "Iran": "1",
                 "Northern_Nigeria": "1"
             },
-            "기타": "Correct Wrong Answers: In Assams answer, buffalo is actually used in southern chinas agricultural industry"
+            "기타": ""
         },
         {
             "en_question": "What cooking utensil is most commonly used in china?",
@@ -2200,11 +2200,11 @@
                 "spain": "1",
                 "Azerbaijan": "0",
                 "Iran": "0",
-                "mexico": "1",
+                "mexico": "0",
                 "Northern_Nigeria": "0",
                 "North_Korea": "1"
             },
-            "기타": "Not Related: A plate is a serving item, not a cooking utensil, so this is unrelated to the main question. A gas stove is an appliance, not a utensil, thus unrelated to the question about cooking utensils. Oil is an ingredient, not a utensil, which makes this answer unrelated to the question. "
+            "기타": "Not Related: A plate is not a cooking utensil. Gas stoves are not cooking utensils. A fork is not directly related to cooking utensils for preparation. Oil is an ingredient not a utensil. ; "
         },
         {
             "en_question": "What is the most famous region for alcohol production in china?",
@@ -2304,10 +2304,10 @@
                 "spain": "1",
                 "mexico": "1",
                 "North_Korea": "1",
-                "en": "1",
+                "en": "0",
                 "Azerbaijan": "1"
             },
-            "기타": ""
+            "기타": "Not Related: Refers to Scotland which is unrelated to the question about China. ; "
         },
         {
             "en_question": "What type of clothing do people from china wear during traditional festivals?",
@@ -2358,7 +2358,7 @@
                     "Batik is often worn as festive attire during traditional celebrations."
                 ]
             },
-            "기준 1": "0",
+            "기준 1": "1",
             "기준 2": {
                 "korea": "1",
                 "indonesia": "1",
@@ -2380,7 +2380,7 @@
                 "en": "1",
                 "West_Java": "1"
             },
-            "기타": "Wrong Correct Answer: According to my experience, regular chinese no longer wear traditional cloths during festival"
+            "기타": ""
         },
         {
             "en_question": "Which region in china is widely known for its livestock industry?",
@@ -2498,6 +2498,7 @@
                 "en": "1"
             },
             "기준 3": {
+                "en": "1",
                 "Algeria": "1",
                 "korea": "1",
                 "indonesia": "1",
@@ -2508,8 +2509,7 @@
                 "Assam": "1",
                 "Northern_Nigeria": "1",
                 "Azerbaijan": "1",
-                "West_Java": "1",
-                "en": "1"
+                "West_Java": "1"
             },
             "기준 4": {
                 "Algeria": "1",
@@ -2517,15 +2517,15 @@
                 "indonesia": "1",
                 "Ethiopia": "1",
                 "spain": "1",
-                "Iran": "1",
+                "Iran": "0",
                 "mexico": "1",
                 "Assam": "1",
                 "Northern_Nigeria": "1",
-                "Azerbaijan": "1",
+                "Azerbaijan": "0",
                 "West_Java": "1",
-                "en": "1"
+                "en": "0"
             },
-            "기타": ""
+            "기타": "Not Related: MW is not a recognized region related to the question"
         },
         {
             "en_question": "What is the usual drink in the breakfast in china?",
@@ -2609,14 +2609,15 @@
                 "North_Korea": "1"
             },
             "기준 3": {
-                "dummy": "1",
+                "dummy": "",
                 "en": "1",
                 "Iran": "1",
                 "Northern_Nigeria": "1",
                 "korea": "1",
                 "spain": "1",
                 "mexico": "1",
-                "North_Korea": "1"
+                "North_Korea": "1",
+                "China": "1"
             },
             "기준 4": {
                 "dummy": "1",
@@ -2856,12 +2857,12 @@
             "기준 2": {
                 "en": "1",
                 "Greece": "1",
-                "mexico": "1",
+                "mexico": "0",
                 "Ethiopia": "1"
             },
             "기준 3": {
-                "en": "1",
-                "Greece": "1",
+                "en": "0",
+                "Greece": "0",
                 "mexico": "1",
                 "Ethiopia": "1"
             },
@@ -2871,7 +2872,7 @@
                 "mexico": "1",
                 "Ethiopia": "1"
             },
-            "기타": ""
+            "기타": "Correct Wrong Answer: Mexicos living with family is common for the elderly in China. ; Repeated: en and Greece are duplicated since they both involves caregiving facilities. "
         },
         {
             "en_question": "What is the most popular fruit in china?",
@@ -2934,7 +2935,7 @@
                 "West_Java": "1",
                 "Algeria": "1"
             },
-            "기타": "Wrong Correct Answer: In china, apple is more popular than orange"
+            "기타": "Wrong Correct Answer: Apples are actually the most popular fruit in China, not oranges ; "
         },
         {
             "en_question": "What is the most common livestock raised in china?",
@@ -2978,7 +2979,7 @@
                     "Goats are a prevalent choice of livestock due to their versatility and hardiness."
                 ]
             },
-            "기준 1": "1",
+            "기준 1": "0",
             "기준 2": {
                 "Azerbaijan": "1",
                 "Iran": "1",
@@ -2987,9 +2988,9 @@
             },
             "기준 3": {
                 "Azerbaijan": "1",
-                "Iran": "1",
+                "Iran": "0",
                 "dummy": "1",
-                "Assam": "1"
+                "Assam": "0"
             },
             "기준 4": {
                 "Azerbaijan": "1",
@@ -2997,7 +2998,7 @@
                 "dummy": "0",
                 "Assam": "1"
             },
-            "기타": "Not Related: Wheat is a crop, not livestock, so this answer does not relate to the livestock question. "
+            "기타": "Wrong Correct Answer: Pigs are the most common livestock raised in China, not chickens. ; Repeated: Iran and Assam are both talking about sheep ; Not Related: It incorrectly refers to wheat, which is not livestock. ; "
         },
         {
             "en_question": "What is a popular family game in china?",
@@ -3244,7 +3245,7 @@
                 "Assam": "1",
                 "dummy": "1",
                 "Ethiopia": "1",
-                "Northern_Nigeria": "1"
+                "Northern_Nigeria": "0"
             },
             "기준 3": {
                 "mexico": "1",
@@ -3256,11 +3257,11 @@
             "기준 4": {
                 "mexico": "1",
                 "Assam": "1",
-                "dummy": "1",
+                "dummy": "0",
                 "Ethiopia": "1",
                 "Northern_Nigeria": "1"
             },
-            "기타": ""
+            "기타": "Correct Wrong Answer: Northern_Nigeria mentioned dinner, which matches the correct answer ; Not Related: Tea time is not generally recognized as a meal. ; "
         },
         {
             "en_question": "Which is the most important meal of the day to people from china?",
@@ -3314,7 +3315,7 @@
                 "Ethiopia": "1",
                 "Northern_Nigeria": "1"
             },
-            "기타": "Not Related: this answer refers to gym workout and not to meals in china. "
+            "기타": "Not Related: A gym workout is not related to the question about meal importance in China ; "
         },
         {
             "en_question": "What is the most popular stew in china?",
@@ -3393,7 +3394,7 @@
                     "Tacos, while not a stew, are a beloved street food often filled with a variety of ingredients."
                 ]
             },
-            "기준 1": "1",
+            "기준 1": "0",
             "기준 2": {
                 "en": "1",
                 "Iran": "1",
@@ -3421,13 +3422,13 @@
                 "Iran": "1",
                 "korea": "1",
                 "Algeria": "1",
-                "Greece": "1",
+                "Greece": "0",
                 "Ethiopia": "1",
                 "Northern_Nigeria": "1",
-                "Azerbaijan": "1",
+                "Azerbaijan": "0",
                 "mexico": "0"
             },
-            "기타": "Not Related: Tacos are not a stew and do not attempt to answer the stew question, making it unrelated. "
+            "기타": "Wrong Correct Answer: Braised pork with vermicelli is not widely recognized as the most popular stew in China ;  instead, hot pot and dishes like mapo tofu or Sichuan-style stews is more popular ; Not Related: Greece mentions an ingredient rather than a stew. Azerbaijan discusses rice, which is not a stew. Tacos are not a stew ; "
         },
         {
             "en_question": "What side dish is the most commonly served on a dining table in china?",
@@ -3605,7 +3606,7 @@
                 "Ethiopia": "0",
                 "North_Korea": "0"
             },
-            "기타": "Not Related: A big plate is dishware and not an eating utensil, so this is unrelated. Gimchi is a food, not an eating utensil and does not attempt to answer the question. "
+            "기타": "Not Related: Ethiopia does not specify an eating utensil, only mentions dishware. North_Korea describes a dish, not an eating utensil. ; "
         },
         {
             "en_question": "What is the main occupation of people in coastal areas in china?",
@@ -3666,9 +3667,9 @@
                 "dummy": "0",
                 "Algeria": "1",
                 "spain": "1",
-                "Northern_Nigeria": "1"
+                "Northern_Nigeria": "0"
             },
-            "기타": "Not Related: This is not related because aerospace engineering is not a typical occupation in coastal areas. "
+            "기타": "Not Related: Aerospace engineering is unrelated to traditional coastal livelihoods. Northern Nigeria is not a coastal area ; "
         },
         {
             "en_question": "What kind of seafood do people from china like to eat?",
@@ -3722,8 +3723,8 @@
             "기준 1": "1",
             "기준 2": {
                 "dummy": "1",
-                "Greece": "1",
-                "spain": "1",
+                "Greece": "0",
+                "spain": "0",
                 "mexico": "0",
                 "Assam": "1"
             },
@@ -3741,7 +3742,7 @@
                 "mexico": "1",
                 "Assam": "1"
             },
-            "기타": "Correct Wrong Answer: Chinese also like calamari and mussels(south). Not Related: Beef steak is not seafood and does not attempt to answer the seafood preference question. "
+            "기타": "Not Related: Dummy said beef steak is not considered as an option, not answering the question ; Correct Wrong Answer: Chinese people also like Calamari, Octopus, and Mussels (south china)"
         },
         {
             "en_question": "What is the main agricultural product produced in china?",
@@ -4075,7 +4076,7 @@
                 "Northern_Nigeria": "1",
                 "West_Java": "1"
             },
-            "기타": "Not Related: Chips are not a dish, they refer to a side item, not a fish dish. "
+            "기타": "Not Related: en is not answering the question ; "
         },
         {
             "en_question": "What food is usually prepared when mothers give birth in china?",
@@ -4116,7 +4117,7 @@
             "기준 2": {
                 "Iran": "1",
                 "korea": "1",
-                "en": "1"
+                "en": "0"
             },
             "기준 3": {
                 "Iran": "1",
@@ -4126,9 +4127,9 @@
             "기준 4": {
                 "Iran": "1",
                 "korea": "1",
-                "en": "1"
+                "en": "0"
             },
-            "기타": ""
+            "기타": "Correct Wrong Answer: this is duplicated with the correct answer. "
         },
         {
             "en_question": "What do people do in china in the morning of the (Lunar) New Year?",
@@ -4259,12 +4260,12 @@
                 "indonesia": "1"
             },
             "기준 3": {
-                "Iran": "1",
+                "Iran": "0",
                 "dummy": "1",
                 "spain": "1",
                 "Assam": "1",
-                "Ethiopia": "1",
-                "indonesia": "1"
+                "Ethiopia": "0",
+                "indonesia": "0"
             },
             "기준 4": {
                 "Iran": "1",
@@ -4274,7 +4275,7 @@
                 "Ethiopia": "1",
                 "indonesia": "1"
             },
-            "기타": "Not Related: Tofu is a plant-based protein and not a type of meat, so it is not related to the question about meat. "
+            "기타": "Repeated: Mutton and lamb are synonymous and refer to similar meats. Goat meat is often equated with lamb and mutton in type ; Not Related: tofu is unrelated because it is a non-meat product. ; "
         }
     ]
 }
