@@ -10,7 +10,7 @@ The finalized data files are located in the `export` folder.
 >>  * Annotated **`fact_china.json`** and **`cultural_choices_descriptive_china.json`**
 >>  * Time spent: **7+4.5 hours** **=** **13.5 hours** 
 
-> **_Zhang (based in Beijing) — Collaborator_**  
+> **_Zhang Tianhao (based in Beijing) — Collaborator_**  
 >>  * Annotated **`cross_china.json`**  
 >>  * Time spent: **4.5 hours**
 >>  * Verified by: _**Jin Zhenming**_
@@ -18,3 +18,4 @@ The finalized data files are located in the `export` folder.
 ### Note
 
 * Programs and scripts to assist the annotation process are also included in this repo. 
+* Due to Internet issue, Zhang cannot access to GitHub
