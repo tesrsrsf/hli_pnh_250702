@@ -19,3 +19,4 @@ The finalized data files are located in the `export` folder.
 
 * Programs and scripts to assist the annotation process are also included in this repo. 
 * Due to Internet issue, Zhang cannot access to GitHub
+* In `export` folder, the ending part of the file name indicates the annotator. 
