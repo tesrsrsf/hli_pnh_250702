@@ -2,13 +2,17 @@ import json
 from openai import OpenAI
 import ast
 
-DATASET_NAME = 'fact_china'
+USER_NAME = 'jin'
+DATASET_NAME = 'cross_china'
+
+F_NAME = f'{USER_NAME}_{DATASET_NAME}'
 QUESTION_FILE = f'dataset/{DATASET_NAME}.json'
-SAVE_FILE = f'{DATASET_NAME}_save.jsonl'
+SAVE_FILE = f'saves/{F_NAME}_save.jsonl'
 CHARACTER_FILE = 'dataset/character_profile_china.json'
-EXPORT_FILE = f'{DATASET_NAME}_final.json'
+EXPORT_FILE = f'export/{F_NAME}_final.json'
 
 API_KEY = ""
+
 PROFILE_LINKS = {
     "Confucius": "https://en.wikipedia.org/wiki/Confucius",
     "Qin Shi Huang": "https://en.wikipedia.org/wiki/Qin_Shi_Huang",
@@ -51,7 +55,7 @@ def remove_stop_chars(data: str):
     i = 1
     while i < length:
         if result[i] == '\'' or result[i] == '\"':
-            if result[i - 1] not in ['[', '{', ' '] and result[i + 1] not in [']', ',', '}']:
+            if result[i - 1] not in ['[', '{', ' '] and result[i + 1] not in [']', ',', '}', ':']:
                 result = result[:i] + result[i + 1:]
                 length = len(result)
 
@@ -89,9 +93,9 @@ def get_gpt_res(question, standard, person):
 
     tasks = {
         1: "Check whether the correct answer is actually correct. Explain the reason. ",
-        2: "Check nine incorrect answers, see if there is any of them can be considered as correct answer. Explain the reason. ",
-        3: "Check nine incorrect answers, see if there is any duplicated answers. Explain the reason. ",
-        4: "Check nine incorrect answers, see if there is any unrelated answers. Explain the reason. "
+        2: "Check incorrect answers, see if there is any of them can be considered as correct answer. Explain the reason. ",
+        3: "Check incorrect answers, see if there is any duplicated answers between these incorrect answers (especially synonyms, like \'mutton\', \'lamb\' and \'Goat meat\' are duplicated). Explain the reason. ",
+        4: "Check incorrect answers, see if there is any unrelated answers (not attempting to answer the question, wrong answers or dont know answer is allowed). Explain the reason. "
     }
 
     output_formats = {
@@ -103,27 +107,28 @@ def get_gpt_res(question, standard, person):
            "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
            "\nfor example, like this: "
            "{\'china\': [\'1\', \'this is correct\'], \'mexico\': [\'0\', \'this is wrong\']}"
-           "\n the result should cover all nine incorrect answers",
+           "\n the result should cover all incorrect answers",
         3: "If the incorrect answer has duplicated answers, respond with \'0\', if not, then respond \'1\', the respond message format should have the format: "
            "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
            "\nfor example, like this: "
            "{\'china\': [\'1\', \'this is not duplicated with others\'], \'mexico\': [\'0\', \'this is duplicated with answer 3\'], \'Azerbaijan\': [\'0\', \'this is duplicated with answer 2\']}"
-           "\n the result should cover all nine incorrect answers",
+           "\n the result should cover all incorrect answers",
         4: "If the incorrect answer is not related to the question, respond with \'0\', if not, then respond \'1\', the respond message format should have the format: "
            "{\'COUNTRY\': [RESULT, \'REASON\'], \'COUNTRY\': [RESULT, \'REASON\']}\n"
            "\nfor example, like this: "
            "{\'china\': [\'1\', \'this is related to the question\'], \'mexico\': [\'0\', \'this is not related to the question\']}"
-           "\n the result should cover all nine incorrect answers. "
+           "\n the result should cover all incorrect answers. "
     }
 
     warning = ("reason should be one to two sentences long, keep it short, also include facts. \n"
                "Omit \' or \" character in the reason, except the one used in the template\n"
-               "Results only, don\' respond with reference")
+               "Results only, don\' respond with reference\n"
+               "In Python grammar, all output should be in one line")
 
     client = OpenAI(api_key=API_KEY)
 
     response = client.responses.create(
-        model="gpt-4.1",
+        model="gpt-4o",
         input=f"Here is a question with one correct answer and nine incorrect answers."
               f"{person} is answering this question\n"
               f"The question is: "
@@ -133,7 +138,7 @@ def get_gpt_res(question, standard, person):
               f"{output_formats[standard]}\n"
               f"{warning}\n"
               f"Wikipedia Link: {PROFILE_LINKS[person]}",
-        tools=[{"type": "web_search_preview"}]
+        #tools=[{"type": "web_search_preview"}]
     )
 
     gpt_results = response.output_text
@@ -222,7 +227,8 @@ def display_ans_question(questions, name=None):
             "오답 보기 6": "",
             "오답 보기 7": "",
             "오답 보기 8": "",
-            "오답 보기 9": ""
+            "오답 보기 9": "",
+            "오답 보기 10": ""
         }
 
         problem_3 = {
@@ -234,7 +240,8 @@ def display_ans_question(questions, name=None):
             "오답 보기 6": "",
             "오답 보기 7": "",
             "오답 보기 8": "",
-            "오답 보기 9": ""
+            "오답 보기 9": "",
+            "오답 보기 10": ""
         }
 
         problem_4 = {
@@ -246,7 +253,8 @@ def display_ans_question(questions, name=None):
             "오답 보기 6": "",
             "오답 보기 7": "",
             "오답 보기 8": "",
-            "오답 보기 9": ""
+            "오답 보기 9": "",
+            "오답 보기 10": ""
         }
 
         problem_else = ""
@@ -269,7 +277,8 @@ def display_ans_question(questions, name=None):
                 "오답 보기 6": "",
                 "오답 보기 7": "",
                 "오답 보기 8": "",
-                "오답 보기 9": ""
+                "오답 보기 9": "",
+                "오답 보기 10": ""
             }
 
             problem_3 = {
@@ -281,7 +290,8 @@ def display_ans_question(questions, name=None):
                 "오답 보기 6": "",
                 "오답 보기 7": "",
                 "오답 보기 8": "",
-                "오답 보기 9": ""
+                "오답 보기 9": "",
+                "오답 보기 10": ""
             }
 
             problem_4 = {
@@ -293,7 +303,8 @@ def display_ans_question(questions, name=None):
                 "오답 보기 6": "",
                 "오답 보기 7": "",
                 "오답 보기 8": "",
-                "오답 보기 9": ""
+                "오답 보기 9": "",
+                "오답 보기 10": ""
             }
 
             problem_else = ""
@@ -450,7 +461,8 @@ def get_progress():
 
 
 def print_helpers():
-    print(f"Type \'SKIP\' to skip current question\n"
+    print(f"Starting with username: {USER_NAME}\n"
+          f"Type \'SKIP\' to skip current question\n"
           f"Type \'EXIT\' to save current progress and leave\n"
           f"\t\'1\' indicates CORRECT, \'0\' indicates WRONG\n"
           )
@@ -458,7 +470,7 @@ def print_helpers():
 
 def print_finish_message():
     print(
-        f"Annotation of this file has finished\n"
+        f"Annotation of this file has FINISHED\n"
         f"You can see current savings in save.jsonl\n"
     )
 
