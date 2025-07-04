@@ -8,7 +8,7 @@ The finalized data files are located in the `export` folder.
 
 > **_Jin Zhenming(김진명) - Repo owner_**  
 >>  * Annotated **`fact_china.json`** and **`cultural_choices_descriptive_china.json`**
->>  * Time spent: **7+6.5 hours** **=** **13.5 hours** 
+>>  * Time spent: **7+6.5+1 hours** **=** **14.5 hours** 
 
 > **_Zhang Tianhao (based in Beijing) — Collaborator_**  
 >>  * Annotated **`cross_china.json`**  
