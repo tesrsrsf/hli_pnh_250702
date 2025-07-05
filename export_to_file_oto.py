@@ -2,9 +2,9 @@ import json
 
 DATASET_NAME = 'cultural_choices_descriptive_china'
 QUESTION_FILE = f'dataset/{DATASET_NAME}.json'
-SAVE_FILE = f'{DATASET_NAME}_save.jsonl'
+SAVE_FILE = f'saves/zhang_{DATASET_NAME}_save.jsonl'
 CHARACTER_FILE = 'dataset/china_profile_china.json'
-EXPORT_FILE = f'{DATASET_NAME}_final.json'
+EXPORT_FILE = f'zhang_{DATASET_NAME}_final.json'
 
 P1 = '기준 1'
 P2 = '기준 2'
